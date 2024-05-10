@@ -34,6 +34,8 @@ HASHNODE_HOST=
 HASHNODE_PER_PAGE=9
 ```
 
+The host is either a domain when using headless or the hashnode subdomain.
+
 
 # Usage
 

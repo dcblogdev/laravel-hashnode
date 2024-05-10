@@ -20,9 +20,19 @@ class Hashnode
 
     public function __construct()
     {
+        if (config('hashnode.url') === null) {
+            abort(400, 'Hashnode url not found or not set in .env');
+        }
+
+        if (config('hashnode.host') === null) {
+            abort(400, 'Hashnode host not found or not set in .env');
+        }
+
         $this->url = config('hashnode.url');
         $this->host = config('hashnode.host');
         $this->perPage = config('hashnode.perPage');
+
+
     }
 
     public function getPublication(): StdClass
