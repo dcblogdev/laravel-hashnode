@@ -52,7 +52,7 @@ class Hashnode
             abort(400, 'Data not found in response');
         }
 
-        return $response->data->publication;
+        return $response->data->publication->posts;
     }
 
     public function getPostsByTag(string $tag): StdClass
@@ -70,7 +70,7 @@ class Hashnode
             abort(400, 'Data not found in response');
         }
 
-        return $response->data->publication;
+        return $response->data->publication->posts;
     }
 
     public function getPost(string $slug): stdClass
