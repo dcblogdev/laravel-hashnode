@@ -1,0 +1,50 @@
+{
+    "name": "dcblogdev/laravel-hashnode",
+    "description": "A Laravel Hashnode API package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Carr",
+            "email": "dave@dcblog.dev",
+            "homepage": "https://dcblog.dev"
+        }
+    ],
+    "homepage": "https://github.com/dcblogdev/laravel-hashnode",
+    "keywords": ["Laravel", "Hashnode", "API", "Package"],
+    "require": {
+        "illuminate/support": "11.x"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^v9.0.4",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "larastan/larastan": "^2.0",
+        "laravel/pint": "^1.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dcblogdev\\Hashnode\\": "src/",
+            "Dcblogdev\\Hashnode\\Tests\\": "tests"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dcblogdev\\Hashnode\\HashnodeServiceProvider"
+            ],
+            "aliases": {
+                "Hashnode": "Dcblogdev\\Hashnode\\Facades\\Hashnode"
+            }
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
