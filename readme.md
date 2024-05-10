@@ -1,6 +1,5 @@
-## Community
 
-There is a Discord community. https://discord.gg/VYau8hgwrm For quick help, ask questions in the appropriate channel.
+![Laravel Hashnode](https://github.com/dcblogdev/laravel-hashnode/assets/1018170/e52fb7f5-8996-4501-9f60-080bae96b9aa)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dcblogdev/laravel-hashnode.svg?style=flat-square)](https://packagist.org/packages/dcblogdev/laravel-hashnode)
 [![Total Downloads](https://img.shields.io/packagist/dt/dcblogdev/laravel-xero.svg?style=flat-square)](https://packagist.org/packages/dcblogdev/laravel-hashnode)
@@ -79,6 +78,10 @@ Hashnode::pages()
 ```php
 Hashnode::page($slug)
 ```
+
+## Community
+
+There is a Discord community. https://discord.gg/VYau8hgwrm For quick help, ask questions in the appropriate channel.
 
 ## Contributing
 
