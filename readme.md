@@ -546,6 +546,9 @@ Example Response
 Pagination is done using the `pageInfo` object returned in the response. You can use the `endCursor` to get the next page of posts.
 
 ```php
+
+$posts = Hashnode::getPosts();
+
 return view('blog.index', [
     'posts' => $posts->edges,
     'pageInfo' => $posts->pageInfo,
