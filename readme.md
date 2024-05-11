@@ -46,6 +46,16 @@ Import the facade at the top of the file:
 use Dcblogdev\Hashnode\Facades\Hashnode;
 ```
 
+Available methods:
+
+- [Hashnode::publication()](#get-publication)
+- [Hashnode::getPosts()](#get-posts)
+- [Hashnode::getPost($slug)](#get-post)
+- [Hashnode::postByTag($slug)](#get-post-by-tag)
+- [Hashnode::searchPosts($term)](#search-posts)
+- [Hashnode::getPages()](#get-pages)
+- [Hashnode::getPage($slug)](#get-page)
+
 ## Get Publication
 
 ```php
