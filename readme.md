@@ -39,6 +39,12 @@ The host is either a domain when using headless or the hashnode subdomain.
 
 # Usage
 
+Import the facade at the top of the file:
+
+```php
+use Dcblogdev\Hashnode\Facades\Hashnode;
+```
+
 ## Get Publication
 
 ```php
