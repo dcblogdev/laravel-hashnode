@@ -31,11 +31,12 @@ Ensure you've set the following in your .env file:
 
 ```
 HASHNODE_HOST=
-HASHNODE_PER_PAGE=9
+HASHNODE_PER_PAGE=19
 ```
 
 The host is either a domain when using headless or the hashnode subdomain.
 
+Hashnode's API supports paging, you can set the number of items per page using the `HASHNODE_PER_PAGE` variable. To a maximum of **20**.
 
 # Usage
 
@@ -539,6 +540,26 @@ Example Response
   }
 }
 ```
+
+### Paging
+
+Pagination is done using the `pageInfo` object returned in the response. You can use the `endCursor` to get the next page of posts.
+
+```php
+return view('blog.index', [
+    'posts' => $posts->edges,
+    'pageInfo' => $posts->pageInfo,
+]);
+```
+
+In a view check if there is a next page and if so use the `endCursor` to get the next page of posts.
+
+```php
+@if($pageInfo->hasNextPage)
+    <a href="{{ url()->current().'?next='.$pageInfo->endCursor }}">Next Page</a> 
+@endif
+```
+
 
 ## Get Post
 
