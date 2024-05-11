@@ -476,8 +476,6 @@ Example Response
 }
 ```
 
-
-
 ## Get Posts
 
 ```php
@@ -487,7 +485,53 @@ Hashnode::getPosts()
 Example Response
 
 ```php
-
+{
+  "edges": [
+    {
+      "node": {
+        "title": "PHP use an enum for Filters",
+        "slug": "php-use-an-enum-for-filters",
+        "brief": "I have a class that allows filtering based on an option, I need a way to accept options and also reject invalid options.\nIn the past, I would reach for a switch statement, or more recently a match statement. But an enum is better suited for this task...",
+        "readTimeInMinutes": 2,
+        "publishedAt": "2024-05-03T10:55:24.205Z",
+        "views": 0,
+        "url": "https://dcblog.dev/php-use-an-enum-for-filters",
+        "coverImage": {
+          "url": "https://cdn.hashnode.com/res/hashnode/image/upload/v1714733973712/55a0a6f0-fef9-45f9-a6d4-19fa90914618.png"
+        },
+        "tags": [
+          {
+            "name": "Filter",
+            "slug": "filter"
+          },
+          {
+            "name": "enum",
+            "slug": "enum"
+          },
+          {
+            "name": "Testing",
+            "slug": "testing"
+          },
+          {
+            "name": "pestphp",
+            "slug": "pestphp"
+          }
+        ],
+        "author": ...
+          "deactivated": false,
+          "following": false,
+          "followsBack": false,
+          "isPro": false
+        }
+      }
+    },
+    }
+  ],
+  "pageInfo": {
+    "endCursor": "NjQxODg4ZWY4Y2ExNWM0MzdiMzE2ZmYxXzIwMjMtMDMtMThUMTI6MjQ6MDAuMDAwWg==",
+    "hasNextPage": true
+  }
+}
 ```
 
 ## Get Post
