@@ -15,6 +15,7 @@ class PostsFragment
         return "posts($params) {
           edges {
             node {
+              id
               title
               slug
               brief

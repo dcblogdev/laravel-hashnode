@@ -9,6 +9,7 @@ class StaticPagesFragment
         return 'staticPages(first: 10) {
           edges {
             node {
+              id
               title
               slug
             }
