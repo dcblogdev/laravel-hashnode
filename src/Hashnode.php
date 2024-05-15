@@ -2,6 +2,8 @@
 
 namespace Dcblogdev\Hashnode;
 
+use Dcblogdev\Hashnode\Fragments\AuthorFragment;
+use Dcblogdev\Hashnode\Fragments\ContentFragment;
 use Dcblogdev\Hashnode\Fragments\PostFragment;
 use Dcblogdev\Hashnode\Fragments\PostsFragment;
 use Dcblogdev\Hashnode\Fragments\PublicationFragment;
@@ -81,6 +83,38 @@ class Hashnode
         }
 
         return $response->data->publication->posts;
+    }
+
+    public function getPostsBySeries(string $slug): StdClass
+    {
+        $query = 'query Publication {
+            publication(host: "'.$this->host.'") {
+                series(slug: "'.$slug.'") {
+                    id
+                    name
+                    createdAt
+                    description '.ContentFragment::handle().'
+                    coverImage
+                    author '.AuthorFragment::handle().'
+                    cuid
+                    slug
+                    sortOrder
+                    '.PostsFragment::handle($this->perPage, $this->getAfter()).'
+                }
+            }
+        }';
+
+        $response = $this->getResponse($query);
+
+        if (! property_exists($response, 'data')) {
+            abort(400, 'Data not found in response');
+        }
+
+        if (! property_exists($response, 'series')) {
+            abort(400, 'Series not found in response');
+        }
+
+        return $response->data->publication->series;
     }
 
     public function getPost(string $slug): stdClass
