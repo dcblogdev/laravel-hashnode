@@ -31,6 +31,21 @@ class PostFragment
             title,
             description
           }
+          series {
+                id
+                name
+                createdAt
+                description {
+                    html,
+                    markdown
+                    text
+                }
+                coverImage
+                cuid
+                slug
+                sortOrder
+                author '.AuthorFragment::handle().'
+            }
         }';
     }
 }
