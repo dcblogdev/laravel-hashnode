@@ -82,7 +82,13 @@ class Hashnode
             abort(400, 'Data not found in response');
         }
 
-        return $response->data->publication->posts;
+        $posts = $response->data->publication->posts;
+
+        if ($posts->edges === []) {
+            abort(404);
+        }
+
+        return $posts;
     }
 
     public function getPostsBySeries(string $slug): StdClass
@@ -110,11 +116,13 @@ class Hashnode
             abort(400, 'Data not found in response');
         }
 
-        if (! property_exists($response, 'series')) {
-            abort(400, 'Series not found in response');
+        $series = $response->data->publication->series;
+
+        if ($series === null) {
+            abort(404);
         }
 
-        return $response->data->publication->series;
+        return $series;
     }
 
     public function getPost(string $slug): stdClass
