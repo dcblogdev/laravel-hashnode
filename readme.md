@@ -56,6 +56,7 @@ Available methods:
 - [Hashnode::searchPosts($term)](#search-posts)
 - [Hashnode::getPages()](#get-pages)
 - [Hashnode::getPage($slug)](#get-page)
+- [Hashnode::newsletterSubscribe($email)](#newsletter-subscribe)
 
 ## Get Publication
 
@@ -788,6 +789,12 @@ Example Response
 
 ```php
 Hashnode::getPage($slug)
+```
+
+## Newsletter Subscribe
+
+```php
+Hashnode::newsletterSubscribe($email)
 ```
 
 Example Response
