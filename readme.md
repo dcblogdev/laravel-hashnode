@@ -797,26 +797,16 @@ Hashnode::getPage($slug)
 Hashnode::newsletterSubscribe($email)
 ```
 
-Example Response
+Example Response for new email address:
 
 ```php
-{
-  "id": "663bb2e3e5735f5642504d4e",
-  "title": "Demo",
-  "slug": "demo",
-  "content": {
-    "html": "<p>Hello there.</p>\n<p>Cool page content.</p>\n<h2 id=\"heading-code\">Code:</h2>\n<pre><code>query <span class=\"hljs-keyword\">Publication</span> {\n  <span class=\"hljs-keyword\">publication</span>(host: \"dcblog.dev\") {\n    isTeam\n    title\n    staticPages(first: <span class=\"hljs-number\">10</span>) {\n      edges {\n        node {\n          title\n          slug\n        }\n      }\n    }\n  }\n}\n</code></pre>",
-    "markdown": "Hello there.\n\nCool page content.\n\n## Code:\n\n\n```\nquery Publication {\n  publication(host: \"dcblog.dev\") {\n    isTeam\n    title\n    staticPages(first: 10) {\n      edges {\n        node {\n          title\n          slug\n        }\n      }\n    }\n  }\n}\n```",
-    "text": "Hello there.\nCool page content.\nCode:\nquery Publication {\n  publication(host: \"dcblog.dev\") {\n    isTeam\n    title\n    staticPages(first: 10) {\n      edges {\n        node {\n          title\n          slug\n        }\n      }\n    }\n  }\n}\n"
-  },
-  "ogMetaData": {
-    "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1715191388031/A-2-tf9nM.png"
-  },
-  "seo": {
-    "title": null,
-    "description": "desc"
-  }
-}
+'PENDING'
+```
+
+Example Response for already subscribed email address:
+
+```php
+'Email already subscribed'
 ```
 
 ## Community
