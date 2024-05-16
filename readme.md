@@ -52,6 +52,7 @@ Available methods:
 - [Hashnode::getPosts()](#get-posts)
 - [Hashnode::getPost($slug)](#get-post)
 - [Hashnode::postByTag($slug)](#get-post-by-tag)
+- [Hashnode::postBySeries($slug)](#get-post-by-series)
 - [Hashnode::searchPosts($term)](#search-posts)
 - [Hashnode::getPages()](#get-pages)
 - [Hashnode::getPage($slug)](#get-page)
@@ -688,6 +689,12 @@ Example Response
     "hasNextPage": true
   }
 }
+```
+
+## Get Posts by Series
+
+```php
+Hashnode::postBySeries($slug)
 ```
 
 ## Get Posts by search term
