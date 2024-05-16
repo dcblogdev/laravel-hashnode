@@ -10,6 +10,7 @@ use Dcblogdev\Hashnode\Fragments\PublicationFragment;
 use Dcblogdev\Hashnode\Fragments\StaticPageFragment;
 use Dcblogdev\Hashnode\Fragments\StaticPagesFragment;
 use Illuminate\Support\Facades\Http;
+use InvalidArgumentException;
 use stdClass;
 
 class Hashnode
@@ -33,7 +34,6 @@ class Hashnode
         $this->url = config('hashnode.url');
         $this->host = config('hashnode.host');
         $this->perPage = config('hashnode.perPage');
-
 
     }
 
@@ -199,26 +199,12 @@ class Hashnode
 
     public function searchPosts(string $term): stdClass
     {
-        $query = 'query Publication {
-            publication(host: "'.$this->host.'") {
-                id
-            }
-        }';
-
-        $response = $this->getResponse($query);
-
-        if (! property_exists($response, 'data')) {
-            abort(400, 'Data not found in response');
-        }
-
-        $host = $response->data->publication;
-
         $query = 'query SearchPostsOfPublication{
           searchPostsOfPublication(
             first: 20
             filter: {
               query: "'.$term.'",
-              publicationId: "'.$host->id.'"
+              publicationId: "'.$this->getHostId().'"
             }
           ) {
             edges {
@@ -236,6 +222,62 @@ class Hashnode
         }
 
         return $response->data->searchPostsOfPublication;
+    }
+
+    public function newsletterSubscribe(string $email): string
+    {
+        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException('Invalid email format');
+        }
+
+        $input = [
+            'publicationId' => $this->getHostId(),
+            'email' => $email,
+        ];
+
+        $query = <<<'GRAPHQL'
+        mutation SubscribeToNewsletter($input: SubscribeToNewsletterInput!) {
+          subscribeToNewsletter(input: $input) {
+            status
+          }
+        }
+        GRAPHQL;
+
+        $response = Http::post($this->url, [
+            'query' => $query,
+            'variables' => [
+                'input' => $input,
+            ],
+        ]);
+
+        $result = $response->object();
+
+        if ($result === null) {
+            abort(400, 'Hashnode host not found');
+        }
+
+        if (isset($result->errors[0])) {
+            return $result->errors[0]->message;
+        }
+
+        return $result->data->subscribeToNewsletter->status;
+    }
+
+    public function getHostId(): string
+    {
+        $query = 'query Publication {
+            publication(host: "'.$this->host.'") {
+                id
+            }
+        }';
+
+        $response = $this->getResponse($query);
+
+        if (! property_exists($response, 'data')) {
+            abort(400, 'Data not found in response');
+        }
+
+        return $response->data->publication->id;
     }
 
     protected function getResponse(string $query): object
