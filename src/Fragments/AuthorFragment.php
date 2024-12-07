@@ -58,7 +58,6 @@ class AuthorFragment
             deactivated
             following
             followsBack
-            isPro
         }';
     }
 }
